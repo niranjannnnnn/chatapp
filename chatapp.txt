@@ -1,0 +1,18 @@
+chatpage is held as a state there is no path going through
+
+Convex
+we have next.js in our front-end and there is convex client library which is used to communicate with the database. Reactor DB(realtime) using websockets. There also actions used to communicate with third party services. We have caching, type safety and acid transactions. 
+
+The Convex Reactor
+its the beating heart of convex
+a custom cloud-hosted reactive database
+accessed through TypeScript cloud functions.
+
+WebHooks
+automated messages sent from apps when something happens, but cannot handle complicated data streams the way API's can handle them.
+we take a user and save it to the convex db
+
+when a user signup to app, clerk will detect an event that might be something called user.created and its gonna create a webhook payload its gonna contain event details such as username, user email etc and event type. Then its gonna send a POST request to our endpoint which is gonna be /clerk.
+We are gonna be listening from a file called 'http.ts'.First this file will trigger a function called fulfill to check if this webhook is secure and if its coming from clerk. once its done, we are gonna hit a couple of different switch cases. first event will be user.created and it will call a mutation and save this user to the convex db and later will add different webhooks type and events to update user profile stuff and session.create and end for online and offline purposes. 
+
+Internal functions can only be called by other functions and cannot be called directly from a Convex client.
