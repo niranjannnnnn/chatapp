@@ -1,7 +1,5 @@
-import { conversations, messages } from '@/dummy-data/db';
 import {defineSchema, defineTable} from 'convex/server'
 import { v } from 'convex/values'
-import { text } from 'stream/consumers'
 
 export default defineSchema({
     users: defineTable({
